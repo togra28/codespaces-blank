@@ -1,0 +1,66 @@
+
+
+
+Regeln bisher:
+
+# 1. POSITIV-WUNSCH PRÜFUNG
+# Wer hat sich diesen Dienst (T oder N) explizit gewünscht?
+
+# 2. NEGATIV-WUNSCH SCHUTZ 
+# Wer hat sich den GEGENTEILIGEN Dienst gewünscht? 
+# Wenn ich heute T-Wunsch habe, will ich heute kein N machen.
+    
+
+# 3. REGULÄRE SUCHE
+# Wir filtern die Leute aus, die abwesend sind, das Limit erreicht haben, gesperrt sind 
+# ODER sich die andere Schicht gewünscht haben.
+
+   # Falls alle Stricke reißen und wir niemanden finden, nehmen wir doch jemanden 
+   # aus der "wer_will_andere_schicht" Gruppe (Notfall-Backup)
+
+- keine T am Wochenende
+- keine NT kein Dienst direkt auf Nachtschicht
+- keine TN kein Dienst direkt auf Tagschicht
+
+Ablauf:
+					
+1. Dienstplan wird erstellt 			py gen_snapshot.py
+-> snapshot_1201_1813.csv
+		
+2. Html und Mitarbeiterpläne erzeugen 		py snapshot_to_html.py snapshot_1201_1813.csv
+						py snapshot_to_personal_plans.py snapshot_1201_1813.csv
+-> snapshot_1201_1813.html
+-> mitarbeiter_plaene_1201_1837
+
+3. Änderung einstellungen.txt
+4. Dienstplan mit Anker erstellen		py gen_snapshot.py --anker snapshot_1201_1813.csv
+->  snapshot_1201_1816.csv
+
+5. Vorschläge für Änderungen			py compare_snapshots.py snapshot_1201_1813.csv snapshot_1201_1816.csv
+-> Anzeige der Änderungen und 
+-> kandidaten_aenderung_1201_1819.csv
+
+6. Html und Mitarbeiterpläne erzeugen		py snapshot_to_html snapshot_1201_1816.csv
+						py snapshot_to_personal_plans.py snapshot_1201_1816.csv snapshot_1201_1813.csv
+						py snapshot_to_personal_plans.py neuer-snapshot alter-snapshot 
+-> snapshot_1201_1816.html
+-> mitarbeiter_plaene_1201_1840
+
+
+FEHLER:
+
+WUNSCH_TAG_MA_05: 5,10
+
+10. hat er nicht: vermutlich weg. zuf. 9N ?
+
+2026,3,MA_05,Erich,5,T
+2026,3,MA_05,Erich,9,N
+2026,3,MA_05,Erich,11,N
+2026,3,MA_05,Erich,13,T
+2026,3,MA_05,Erich,19,N
+2026,3,MA_05,Erich,24,T
+
+
+
+
+

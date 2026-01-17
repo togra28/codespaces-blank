@@ -1,0 +1,50 @@
+# Zeitraum
+JAHR: 2026
+MONAT: 3
+
+# Abwesenheiten (Name: Tage getrennt durch Komma)
+ABW_MA_01:12,13
+ABW_MA_02:12,13,14
+ABW_MA_03:12,13,14
+ABW_MA_04:9,10,12
+ABW_MA_07:6
+
+
+# Wunsch-Nachtdienste
+WUNSCH_NACHT_MA_04: 1, 4, 5, 6
+
+# Wunsch-Tagdienste
+WUNSCH_TAG_MA_01: 14,15
+WUNSCH_TAG_MA_04: 11
+WUNSCH_TAG_MA_05: 5,9,10
+WUNSCH_TAG_MA_06: 2,3
+
+# Limits (Name: MaxDienste)
+LIMIT_MA_01: 8
+LIMIT_MA_02: 8
+LIMIT_MA_03: 8
+LIMIT_MA_04: 8
+LIMIT_MA_05: 8
+LIMIT_MA_06: 8
+LIMIT_MA_07: 8
+#LIMIT_MA_08: 4
+#LIMIT_MA_09: 8
+#LIMIT_MA_10: 6
+#LIMIT_MA_11: 6
+#LIMIT_MA_12: 8
+
+# Mitarbeiter Namen
+MA_01: Anna
+MA_02: Ben
+MA_03: Clara
+MA_04: Dieter
+MA_05: Erich
+MA_06: Franzi
+MA_07: Gustl
+#MA_08: Hilde
+#MA_09: Inge
+#MA_10: Jola
+#MA_11: Karla
+#MA_12: Linda
+
+
