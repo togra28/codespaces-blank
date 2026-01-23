@@ -1,4 +1,4 @@
-
+Wichtig: GEMINI für KI-coding verwenden - nicht Copilot 
 
 
 Regeln bisher:
@@ -22,13 +22,18 @@ Regeln bisher:
 - keine NT kein Dienst direkt auf Nachtschicht
 - keine TN kein Dienst direkt auf Tagschicht
 
+# 4. Änderungen nur bestimmte MA
+# beim Aufruf mit --anker wird auch die SPRINGER Einstellung
+# verwendet - nur die MA dürfen Dienste geändert bekommen 
+# alles andere bleibt verankert
+
 Ablauf:
 					
 1. Dienstplan wird erstellt 			py gen_snapshot.py
 -> snapshot_1201_1813.csv
 		
 2. Html und Mitarbeiterpläne erzeugen 		py snapshot_to_html.py snapshot_1201_1813.csv
-						py snapshot_to_personal_plans.py snapshot_1201_1813.csv
+    						py snapshot_to_personal_plans.py snapshot_1201_1813.csv
 -> snapshot_1201_1813.html
 -> mitarbeiter_plaene_1201_1837
 
@@ -59,6 +64,49 @@ WUNSCH_TAG_MA_05: 5,10
 2026,3,MA_05,Erich,13,T
 2026,3,MA_05,Erich,19,N
 2026,3,MA_05,Erich,24,T
+
+
+---- Änderungen: zum beginn einer neuen Unterhaltung: copilot
+Projekt Dienstplan - verhalten bei Änderungen im Plan:
+wir haben das Pythono Projekt Dienstplan mit folgenden Dateien:
+- einstellungen.txt
+- gen_snapshot.py
+- compare_snaphsots.py
+
+
+... die Dateien kopieren
+-------------------
+Frage: ich möchte eine Möglichkeit hinzufügen die es ermöglicht über eine weiteren Einstellung
+als Parameter oder csv-Datei die Mitarbeiter festzulegen, die überhaupt für eine Dienständerung
+in Frage kommen. Die Praxis sieht doch so aus, dass im Fall eines Ausfalls eines Mitarbeiter
+erst mal alle anderen Mitarbeiter gefragt werden ob sie irgendwie einspringen könnten. Erst dann
+kann eine Änderung vorgenommen werden? Es existiert also schon ein Snapshot. Es werden Mitarbeiter
+genannt die für eine Änderung in Frage kommen. Das Ergebnis ist dann ein Snapshot der nur
+diese genannten Mitarbeiter im Dienstplan ändert. Alles andere bleibt verankert.
+
+
+------------------------------------
+-- getestet mit folgender einstellung.txt:
+--------------------------------------
+
+# Wer darf bei Ausfällen einspringen? (IDs getrennt durch Komma)
+SPRINGER: MA_01, MA_05, MA_06
+
+1. ABW_MA_07:6
+2. ABW_MA_07:6,20,25,29
+
+der 2. aufruf mit Anker:
+py gen_snapshot.py --anker snapshot_2201_1641.csv
+
+Ausgabe:
+--- MODUS: KORREKTUR (Anker: snapshot_2201_1641.csv) ---
+
+PROTOKOLL DER ÄNDERUNGEN:
+  [CHANGE] Tag 20 (N): Gustl -> Anna
+  [CHANGE] Tag 25 (T): Gustl -> Erich
+  [CHANGE] Tag 29 (N): Gustl -> Franzi
+  [CHANGE] Tag 30 (T): Anna -> !!! NICHT BESETZT (Kein Springer verfügbar) !!!
+------------------------------
 
 
 
