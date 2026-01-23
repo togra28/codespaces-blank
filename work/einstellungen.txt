@@ -2,12 +2,15 @@
 JAHR: 2026
 MONAT: 3
 
+# Wer darf bei Ausfällen einspringen? (IDs getrennt durch Komma)
+SPRINGER: MA_01, MA_05, MA_06
+
 # Abwesenheiten (Name: Tage getrennt durch Komma)
 ABW_MA_01:12,13
 ABW_MA_02:12,13,14
 ABW_MA_03:12,13,14
 ABW_MA_04:9,10,12
-ABW_MA_07:6
+ABW_MA_07:6,20,25,29
 
 
 # Wunsch-Nachtdienste
